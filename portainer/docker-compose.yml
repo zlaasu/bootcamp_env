@@ -1,0 +1,14 @@
+version: "3"
+services:
+  router:
+    image: portainer/portainer
+    container_name: "docker_GUI"
+    ports:
+      - "9000:9000"
+    labels:
+      - "traefik.frontend.rule=Host:docker.moveapp.org"
+      - "traefik.docker.network=proxy"
+      - "traefik.port=9000"
+    volumes:
+      - .\data:/data
+    restart: always

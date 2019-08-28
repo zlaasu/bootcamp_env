@@ -1,3 +1,5 @@
 .idea
 /portainer/data/*
 /mysql/data/*
+/tomcat_db_dev/data_tomcat/*
+/tomcat_db_dev/data_mysql/*

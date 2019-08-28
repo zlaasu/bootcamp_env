@@ -1,12 +1,12 @@
 
-#RUN
+# RUN
 
 ```$xslt
 docker-compose.exe up
 ```
 ...for each folder.
 
-#LINKS
+# LINKS
 
 **tomcat:** http://localhost:8080/ 
 
@@ -25,9 +25,20 @@ default password
 root
 ```
 
-#troubleshoot
+# troubleshoot
 
 1) Problem with phpmyadmin login.
 ```
 ALTER USER root IDENTIFIED WITH mysql_native_password BY 'PASSWORD';
+```
+2) Problem 403 with login to tomcat manager
+```$xslt
+Find the CATALINA_HOME/webapps/manager/META-INF/context.xml file 
+and add the comment markers around the Valve.
+
+<Context antiResourceLocking="false" privileged="true" >
+<!--
+<Valve className="org.apache.catalina.valves.RemoteAddrValve" allow="127\.\d+\.\d+\.\d+|::1|0:0:0:0:0:0:0:1" />
+-->
+</Context>
 ```

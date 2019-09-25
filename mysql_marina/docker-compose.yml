@@ -1,16 +1,18 @@
 version: '3.3'
 services:
-  mysql:
-    container_name: mysql
-    image: 'mysql:5.7'
+  mysql_mariadb:
+    container_name: mysql_mariadb
+    image: 'mariadb:latest'
     ports:
       - "3306:3306"
     command:
       - --character-set-server=utf8
       - --collation-server=utf8_unicode_ci
     restart: always
+
     volumes:
       - .\data:/var/lib/mysql/
+
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: test
